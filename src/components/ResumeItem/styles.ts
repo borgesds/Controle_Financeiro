@@ -26,4 +26,25 @@ export const Container = styled.div`
   }
 `
 
-export const Header = styled.header``
+export const HeaderItem = styled.header`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 0.625rem;
+  margin: 1.25rem auto;
+
+  svg {
+    width: 1.563rem;
+    height: 1.563rem;
+  }
+`
+
+export const HeaderTitle = styled.p`
+  font-size: 1.25rem;
+`
+
+export const Total = styled.span`
+  font-size: 1.875rem;
+  font-weight: bold;
+`

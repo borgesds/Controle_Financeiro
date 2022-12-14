@@ -1,5 +1,19 @@
-import { Container } from './styles'
+import { Container, HeaderItem, HeaderTitle, Total } from './styles'
 
-export function ResumeItem() {
-  return <Container>Ola</Container>
+interface TitleIcon {
+  title: string
+  Icon?: any
+  value: any
+}
+
+export function ResumeItem({ title, Icon, value }: TitleIcon) {
+  return (
+    <Container>
+      <HeaderItem>
+        <HeaderTitle>{title}</HeaderTitle>
+        <Icon />
+      </HeaderItem>
+      <Total>{value}</Total>
+    </Container>
+  )
 }
