@@ -9,9 +9,20 @@ import {
   RadioGroup,
 } from './styles'
 
-export function Form() {
+interface HandleAddTransition {
+  handleAdd: () => string | number | boolean
+}
+
+interface AddData {
+  id: number
+  desc: string
+  amount: number
+  expense: boolean
+}
+
+export function Form({ handleAdd }: HandleAddTransition) {
   const [desc, setDesc] = useState('')
-  const [amount, setAmount] = useState('')
+  const [amount, setAmount] = useState(0)
   const [isExpense, setExpense] = useState(false)
 
   // criar um id aleatório
@@ -28,12 +39,17 @@ export function Form() {
       alert('O valor tem que ser positivo!!!')
     }
 
-    const transation ={
+    const transition: AddData = {
       id: generateId(),
-      desc: desc,
-      amount: amount,
+      desc,
+      amount,
       expense: isExpense,
     }
+
+    handleAdd(transition)
+
+    setDesc('')
+    setAmount(0)
   }
 
   return (

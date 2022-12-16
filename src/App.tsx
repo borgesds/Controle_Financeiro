@@ -13,23 +13,27 @@ export function App() {
   )
 
   // entrada
-  const [income, setIncome] = useState(0)
+  const [income, setIncome] = useState<number>(0)
   // saídas
-  const [expense, setExpense] = useState(0)
+  const [expense, setExpense] = useState<number>(0)
   // total
-  const [total, setTotal] = useState(0)
+  const [total, setTotal] = useState<number>(0)
 
   useEffect(() => {
     const amountExpense = transactionsList
-      .filter((item) => item.expense)
-      .map((transaction) => Number(transaction.amount))
+      .filter((item: any) => item.expense)
+      .map((transaction: number) => Number(transaction.amount))
 
     const amountIncome = transactionsList
-      .filter((item) => !item.expense)
-      .map((transaction) => Number(transaction.amount))
+      .filter((item: any) => !item.expense)
+      .map((transaction: number) => Number(transaction.amount))
 
-    const expense = amountExpense.reduce((acc, cur) => acc + cur, 0).toFixed(2)
-    const income = amountIncome.reduce((acc, cur) => acc + cur, 0).toFixed(2)
+    const expense = amountExpense
+      .reduce((acc: number, cur: number) => acc + cur, 0)
+      .toFixed(2)
+    const income = amountIncome
+      .reduce((acc: number, cur: number) => acc + cur, 0)
+      .toFixed(2)
 
     const total = Math.abs(income - expense).toFixed(2)
 
@@ -38,7 +42,7 @@ export function App() {
     setTotal(`${Number(income) < Number(expense) ? '-' : ''} R$ ${total}`)
   }, [transactionsList])
 
-  const handleAdd = (transaction) => {
+  const handleAdd = (transaction: string | number | boolean) => {
     const newArrayTransactions = [...transactionsList, transaction]
 
     setTransactionsList(newArrayTransactions)
@@ -51,7 +55,7 @@ export function App() {
 
       <Resume income={income} expense={expense} total={total} />
 
-      <Form />
+      <Form handleAdd={handleAdd} />
       <GlobalStyle />
     </ThemeProvider>
   )
