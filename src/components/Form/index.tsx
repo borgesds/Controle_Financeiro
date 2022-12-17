@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Grid } from '../Grid'
 import {
   Button,
   Container,
@@ -11,6 +12,8 @@ import {
 
 interface HandleAddTransition {
   handleAdd: () => string | number | boolean
+  transactionsList: []
+  setTransactionsList: []
 }
 
 interface AddData {
@@ -20,7 +23,11 @@ interface AddData {
   expense: boolean
 }
 
-export function Form({ handleAdd }: HandleAddTransition) {
+export function Form({
+  handleAdd,
+  transactionsList,
+  setTransactionsList,
+}: HandleAddTransition) {
   const [desc, setDesc] = useState('')
   const [amount, setAmount] = useState(0)
   const [isExpense, setExpense] = useState(false)
@@ -35,8 +42,10 @@ export function Form({ handleAdd }: HandleAddTransition) {
   const handleSave = () => {
     if (!desc || !amount) {
       alert('Informe a descrição do valor!!!')
+      return
     } else if (amount < 1) {
       alert('O valor tem que ser positivo!!!')
+      return
     }
 
     const transition: AddData = {
@@ -88,6 +97,8 @@ export function Form({ handleAdd }: HandleAddTransition) {
 
         <Button onClick={handleSave}>ADICIONAR</Button>
       </Container>
+
+      <Grid itens={transactionsList} setItens={setTransactionsList} />
     </FormContainer>
   )
 }

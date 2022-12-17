@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const FormContainer = styled.form`
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 `
@@ -16,7 +17,7 @@ export const Container = styled.div`
   margin: 1.25rem;
   width: 98%;
   background-color: ${(props) => props.theme['--white']};
-  box-shadow: 0px 0px 0px ${(props) => props.theme['red-500']};
+  box-shadow: 0px 0px 5px ${(props) => props.theme['gray-500']};
   border-radius: 8px;
 
   @media (max-width: 750px) {
