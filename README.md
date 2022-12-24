@@ -7,7 +7,9 @@ Projeto de estudo que é um controle finaceiro com entrada e saída. Contempla c
 
 <h3> Ferramentas </h3>
 
- - React, Javascript, HTML, CSS
+ - React, Typescript, Javascript, HTML, CSS
+ 
+ - Estou trabalhando em meus projetos com Typescript, estou em aprendizado constante então algumas tipagens vai receber any como padrão, mas os próximos  projetos tenho certeza que estarei mais evoluído.
 
 <h3> Layout </h3>
 
